@@ -1,0 +1,1 @@
+addMagic("section", "tar", "foo");

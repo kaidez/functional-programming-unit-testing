@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Functional programming test suite</title>
+
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.1.1.css">
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://code.jquery.com/qunit/qunit-2.1.1.js"></script>
+  <script src="blanket.min.js" data-cover-flags="debug"></script>
+  <script src="app.js" data-cover></script>
+
+  <script>
+    QUnit.test("Add two numbers", function( assert ) {
+      var foo = 1;
+      var bar = 2;
+      assert.equal(CreateElement(foo, bar), 3);
+    });
+
+    QUnit.test("Return a string", function( assert ) {
+      assert.equal(log("foo"), "foo");
+    });
+
+    QUnit.test("Return a function", function( assert ) {
+      function returnFunc(){ return; }
+      var foo = function(myFunc){}
+      assert.equal(doSomething(foo), foo(), "the function was returned successfully!");
+    });
+
+  QUnit.test( "Append a div that has text and a class", function( assert ) {
+
+    var fixture = document.getElementById("qunit-fixture"),
+        links = fixture.getElementsByTagName("div");
+
+    addMagic("div", "qunit-fixture", "text", "some-class");
+
+    assert.equal( $( "div", fixture ).length, 1, "div added successfully!" );
+
+    assert.equal(links[0].innerHTML, "text", "the div has text!");
+
+    assert.equal( $(links[0]).hasClass("some-class"), 1, "the div has a class named 'some-class'!" );
+  });
+
+
+
+  </script>
+
+</head>
+<body>
+
+  <div id="qunit">
+
+  </div>
+  <div id="qunit-fixture">
+
+  </div>
+  </body>
+</html>
