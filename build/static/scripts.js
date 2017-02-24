@@ -1,1 +1,1 @@
-addMagic("section", "tar", "foo");
+addMagic("section", "target", "foo");
