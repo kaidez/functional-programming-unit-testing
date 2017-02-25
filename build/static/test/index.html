@@ -89,10 +89,10 @@
     // Start 'Carousel()' tests
     QUnit.test("Carousel() should return a string and a number", function(assert) {
 
-      var myNumber  = 65253635;
       var myString = "My string";
+      var myNumber = 4545435234;
 
-      assert.ok(Carousel(myNumber, myString), true);
+      assert.ok(Carousel(myString, myNumber), "a string and a number were returned");
     });
 
 
