@@ -80,7 +80,7 @@
     // Start 'doSomething()' tests
     QUnit.test("doSomething() should return a function", function(assert) {
       function returnFunc(){ return; }
-      var myFunc = function(returnFunc){};
+      var  myFunc = function(returnFunc){};
       assert.equal(doSomething(myFunc), myFunc(), "the function was returned successfully!");
     });
 
@@ -89,10 +89,10 @@
     // Start 'Carousel()' tests
     QUnit.test("Carousel() should return a string and a number", function(assert) {
 
-      var myString = "My string";
-      var myNumber = 4545435234;
-
-      assert.ok(Carousel(myString, myNumber), "a string and a number were returned");
+      /* Best to test using "new" since it's a constructor function to
+       * prevent certain strict mode bugs http://bit.ly/2lRbngj
+       */
+      assert.ok(new Carousel("some-element", 4545435234), "a string and a number were returned!");
     });
 
 
