@@ -11,38 +11,104 @@
   <script src="../app.js" data-cover></script>
 
   <script>
-    QUnit.test("Add two numbers", function( assert ) {
-      var foo = 1;
-      var bar = 2;
-      assert.equal(CreateElement(foo, bar), 3);
+
+    // Test 'log()'
+    QUnit.test("'log()' should return a string with at least 1 character", function(assert) {
+
+      var string = "foo";
+
+      assert.equal(log(string), "foo", "the string was returned successfully!");
+
+      assert.equal(string.length >= 1, 1, "the string has at least 1 character!");
     });
 
-    QUnit.test("Return a string", function( assert ) {
-      assert.equal(log("foo"), "foo");
+    QUnit.test("'log()' should throw an error if no parameter is passed or the parameter is not a string", function() {
+
+      var func = function(){};
+      raises(function () {
+        log(func);
+      }, Error, "Must throw error to pass since a function was passed as a parameter.");
+
+      raises(function () {
+        log(56452452435245);
+      }, Error, "Must throw error to pass since a number was passed as a parameter.");
+
+      raises(function () {
+        log(true);
+      }, Error, "Must throw error to pass since a boolean was passed as a parameter.");
+
+      raises(function () {
+        log([]);
+      }, Error, "Must throw error to pass since an array was passed as a parameter.");
+
+      raises(function () {
+        log({});
+      }, Error, "Must throw error to pass since an object was passed as a parameter.");
+
+      raises(function () {
+        log();
+      }, Error, "Must throw error to pass since there's no parameter passed.");
+
+      raises(function() {
+        log(undefined);
+      }, Error, "Must throw error to pass since parameter is undefined.");
+
+      raises(function() {
+        log(null);
+      }, Error, "Must throw error to pass since parameter is null.");
+
+      var mySymbol = Symbol('foo');
+      raises(function() {
+        log(mySymbol);
+      }, Error, "Must throw error to pass since an ES2015 symbol was passed as a parameter.");
+
+
     });
 
-    QUnit.test("Return a function", function( assert ) {
-      function returnFunc(){ return; }
-      var foo = function(myFunc){}
-      assert.equal(doSomething(foo), foo(), "the function was returned successfully!");
-    });
-
-  QUnit.test( "Append a div that has text and a class", function( assert ) {
-
-    var fixture = document.getElementById("qunit-fixture"),
-        links = fixture.getElementsByTagName("div");
-
-    addMagic("div", "qunit-fixture", "text", "some-class");
-
-    assert.equal( $( "div", fixture ).length, 1, "div added successfully!" );
-
-    assert.equal(links[0].innerHTML, "text", "the div has text!");
-
-    assert.equal( $(links[0]).hasClass("some-class"), 1, "the div has a class named 'some-class'!" );
-  });
 
 
-  </script>
+
+QUnit.test("Return a function", function(assert) {
+  function returnFunc(){ return; }
+  var foo = function(myFunc){};
+  assert.equal(doSomething(foo), foo(), "the function was returned successfully!");
+});
+
+
+
+QUnit.test("Add two numbers", function(assert) {
+  var foo = 1;
+  var bar = 2;
+  assert.equal(CreateElement(foo, bar), 3);
+});
+
+QUnit.test("Return a string", function(assert) {
+  assert.equal(log("foo"), "foo");
+});
+
+
+
+QUnit.test( "it should append a div that has text and a class named 'some-class", function(assert) {
+
+  var fixture = document.getElementById("qunit-fixture"),
+  links = fixture.getElementsByTagName("div");
+
+  addMagic("div", "qunit-fixture", "text", "some-class");
+
+  assert.equal( $( "div", fixture ).length, 1, "div added successfully!" );
+
+  assert.equal(links[0].innerHTML, "text", "the div has text!");
+
+  assert.equal( $(links[0]).hasClass("some-class"), 1, "the div has a class named 'some-class'!" );
+});
+
+
+
+
+
+
+
+</script>
 
 </head>
 <body>
@@ -53,5 +119,5 @@
   <!-- DOM elements that QUnit will test go here -->
   <div id="qunit-fixture"></div>
 
-  </body>
+</body>
 </html>
