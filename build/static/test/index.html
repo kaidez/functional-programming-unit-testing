@@ -4,10 +4,17 @@
   <meta charset="utf-8">
   <title>Functional programming test suite</title>
 
+  <!-- Core files for QUnit styling and functionality -->
   <link rel="stylesheet" href="qunit.css">
-  <script src="jquery.js"></script>
   <script src="qunit.js"></script>
+
+  <!-- Core jQuery used by fixtures -->
+  <script src="jquery.js"></script>
+
+  <!-- For detecting code coverage -->
   <script src="blanket.min.js" data-cover-flags="debug"></script>
+
+  <!-- The code that's getting tested -->
   <script src="../app.js" data-cover></script>
 
   <script>
@@ -23,7 +30,7 @@
     });
 
 
-
+    // Error checking of type parameters passed to 'log()'
     QUnit.test("'log()' should throw an error if no parameter is passed or the parameter is not a string", function() {
 
       var func = function(){};
@@ -67,12 +74,11 @@
     });
 
 
-
-
-    QUnit.test("Return a function", function(assert) {
+    // Start 'doSomething()' tests
+    QUnit.test("doSomething() should return a function", function(assert) {
       function returnFunc(){ return; }
-      var foo = function(myFunc){};
-      assert.equal(doSomething(foo), foo(), "the function was returned successfully!");
+      var myFunc = function(returnFunc){};
+      assert.equal(doSomething(myFunc), myFunc(), "the function was returned successfully!");
     });
 
 
@@ -82,7 +88,6 @@
       var bar = 2;
       assert.equal(CreateElement(foo, bar), 3);
     });
-
 
 
     QUnit.test( "it should append a div that has text and a class named 'some-class", function(assert) {
