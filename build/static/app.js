@@ -4,11 +4,15 @@ function CreateElement(x, y){
   return x + y;
 }
 
+// Code tied to the first unit test
 var log = function(someVariable) {
+  if((typeof someVariable != "string") || (someVariable.length <= 0)) {
+    throw new Error("expecting a string with at least one character")
+  } else {
     console.log(someVariable);
     return someVariable;
+  }
 };
-
 
 var doSomething = function(thing) {
     return thing();
