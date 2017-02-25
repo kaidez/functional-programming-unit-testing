@@ -24,9 +24,9 @@ function Carousel(getElement, spinDuration) {
   }
 }
 
-Carousel.prototype.setText = function(){
-  var foo = document.getElementById(this.getElement);
-  return foo.innerHTML = "foo";
+Carousel.prototype.init = function(){
+  var getSlider = document.getElementById(this.getElement);
+  return getSlider.innerHTML = "The slider's working...";
 };
 
 function addMagic(el, target, text, className) {
