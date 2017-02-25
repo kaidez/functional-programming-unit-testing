@@ -14,7 +14,13 @@ var doSomething = function(someFunction) {
 function Carousel(element, spinDuration) {
   this.element = element;
   this.spinDuration = spinDuration;
-  return this;
+
+  if((typeof element != "string") || (typeof spinDuration != "number")) {
+    // throw new Error("element should be a string, spinDuration should be a number");
+    console.log("foo");
+  } else {
+    return this;
+  }
 }
 
 function addMagic(el, target, text, className) {
