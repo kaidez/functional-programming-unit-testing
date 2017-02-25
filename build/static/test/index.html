@@ -165,7 +165,10 @@
 
 
 
-    QUnit.test("it should append a div that has text and a class named 'some-class", function(assert) {
+
+
+    // Start 'addMagicClass()' tests
+    QUnit.test("'addMagicClass()' should find an element on the page and add a class to it", function() {
 
       var fixture = document.getElementById("qunit-fixture"),
           links = fixture.getElementsByTagName("div");
@@ -178,6 +181,8 @@
 
       assert.equal($(links[0]).hasClass("some-class"), 1, "the div has a class named 'some-class'!");
     });
+
+
 
 </script>
 
