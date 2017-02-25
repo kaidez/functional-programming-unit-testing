@@ -13,12 +13,15 @@ var doSomething = function(someFunction) {
   return someFunction();
 }
 
-function Carousel(getElement, spinDuration) {
+/* Pass undefined as the last parameter to prevent extra params being
+ * passed...old skool Paul Irish hack: http://bit.ly/2mpRQ4o
+ */
+function Carousel(getElement, spinDuration, undefined) {
   this.getElement = getElement;
   this.spinDuration = spinDuration;
 
-  if((typeof getElement != "string") || (typeof spinDuration != "number")) {
-    throw new Error("the first parameter (element) should be a string, the second parameter (spinDuration) should be a number");
+  if((typeof getElement != "string") || (typeof spinDuration != "number") || (arguments.length != 2)) {
+    throw new Error("Carousel() takes exactly 2 parameters: the first one (getElement) must be a string, the second one (spinDuration) must be a number");
   } else {
     return this;
   }
