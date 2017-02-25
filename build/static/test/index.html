@@ -30,6 +30,7 @@
     });
 
 
+
     /* Error checking of primitive JS types passed to 'log()' as a
      * parameter
      */
@@ -77,6 +78,8 @@
     });
 
 
+
+
     // Start 'doSomething()' tests
     QUnit.test("doSomething() should return a function", function(assert) {
       function returnFunc(){ return; }
@@ -94,6 +97,72 @@
        */
       assert.ok(new Carousel("some-element", 4545435234), "a string and a number were returned!");
     });
+
+
+
+    /* Error checking of primitive JS types passed to 'Carousel()' as a
+     * parameter. "new" doesn't need to be passed to make the tests
+     * pass, but better safe than sorry.
+     */
+    QUnit.test("'Carousel()' should throw an error if incorrect parameters are passed, in the wrong order or not passed at all", function() {
+
+      var func = function(){},
+          mySymbol = Symbol("a symbol");
+
+      raises(function() {
+        new Carousel();
+      }, Error, "it threw an error since there's no parameter passed");
+
+      raises(function() {
+        new Carousel(5345435, "carousel-one");
+      }, Error, "it threw an error since parameters are listed in the wrong order..string first, number second");
+
+      raises(function() {
+        new Carousel(5345435, "carousel-one", "some-string");
+      }, Error, "it threw an error since more than two parameters were passed - (5345435, 'carousel-one', 'some-string')");
+
+      raises(function() {
+        new Carousel("carousel-one", 5345435, undefined);
+      }, Error, "it threw an error since more than two parameters were passed - ('carousel-one', 5345435, undefined)");
+
+      raises(function() {
+        new Carousel([], "string");
+      }, Error, "it threw an error since incorrect parameters were passed - ([], 'string')");
+
+      raises(function() {
+        new Carousel({}, 5);
+      }, Error, "it threw an error since incorrect parameters were passed - ({}, 5)");
+
+      raises(function() {
+        new Carousel([], 5);
+      }, Error, "it threw an error since incorrect parameters were passed - ([], 5)");
+
+      raises(function() {
+        new Carousel({"name": "foo", "age": 5}, 5);
+      }, Error, "it threw an error since incorrect parameters were passed - ({'name': 'foo', 'age': 5}, 5)");
+
+      raises(function() {
+        new Carousel(func, undefined);
+      }, Error, "it threw an error since incorrect parameters were passed - (func, undefined)");
+
+      raises(function() {
+        new Carousel(undefined, "string");
+      }, Error, "it threw an error since incorrect parameters were passed - (undefined, 'string')");
+
+      raises(function() {
+        new Carousel(null, null);
+      }, Error, "it threw an error since incorrect parameters were passed - (null, null)");
+
+      raises(function() {
+        new Carousel(5, 55444453, func);
+      }, Error, "it threw an error since incorrect parameters were passed - (5, 55444453, func)");
+
+      raises(function() {
+        new Carousel(mySymbol, "string");
+      }, Error, "it threw an error since incorrect parameters were passed - (null, null)");
+
+    });
+
 
 
     QUnit.test("it should append a div that has text and a class named 'some-class", function(assert) {
