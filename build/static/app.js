@@ -11,6 +11,12 @@ var doSomething = function(someFunction) {
   return someFunction();
 }
 
+function Carousel(element, spinDuration) {
+  this.element = element;
+  this.spinDuration = spinDuration;
+  return this;
+}
+
 function addMagic(el, target, text, className) {
   var setElement = document.createElement(el);
   var findElement = document.getElementById(target);
