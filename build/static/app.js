@@ -16,8 +16,8 @@ function Carousel(element, spinDuration) {
   this.spinDuration = spinDuration;
 
   if((typeof element != "string") || (typeof spinDuration != "number")) {
-    // throw new Error("element should be a string, spinDuration should be a number");
-    console.log("foo");
+    throw new Error("element should be a string, spinDuration should be a number");
+
   } else {
     return this;
   }
