@@ -1,3 +1,5 @@
+"use strict";
+
 var log = function(someVariable) {
   if((typeof someVariable != "string") || (someVariable.length <= 0)) {
     throw new Error("expecting a string with at least one character");
@@ -11,17 +13,21 @@ var doSomething = function(someFunction) {
   return someFunction();
 }
 
-function Carousel(element, spinDuration) {
-  this.element = element;
+function Carousel(getElement, spinDuration) {
+  this.getElement = getElement;
   this.spinDuration = spinDuration;
 
-  if((typeof element != "string") || (typeof spinDuration != "number")) {
+  if((typeof getElement != "string") || (typeof spinDuration != "number")) {
     throw new Error("the first parameter (element) should be a string, the second parameter (spinDuration) should be a number");
-
   } else {
     return this;
   }
 }
+
+Carousel.prototype.setText = function(){
+  var foo = document.getElementById(this.getElement);
+  return foo.innerHTML = "foo";
+};
 
 function addMagic(el, target, text, className) {
   var setElement = document.createElement(el);
