@@ -1,20 +1,14 @@
-function CreateElement(x, y){
-  this.x = x;
-  this.y = y;
-  return x + y;
-}
-
 var log = function(someVariable) {
   if((typeof someVariable != "string") || (someVariable.length <= 0)) {
-    throw new Error("expecting a string with at least one character")
+    throw new Error("expecting a string with at least one character");
   } else {
     console.log(someVariable);
     return someVariable;
   }
 };
 
-var doSomething = function(thing) {
-  return thing();
+var doSomething = function(someFunction) {
+  return someFunction();
 }
 
 function addMagic(el, target, text, className) {
