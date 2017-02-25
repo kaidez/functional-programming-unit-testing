@@ -22,18 +22,26 @@
     // Start 'log()' tests
     QUnit.test("'log()' should return a string with at least 1 character", function(assert) {
 
-      var string = "foo";
+      var myString = "a string";
 
-      assert.equal(log(string), "foo", "the string was returned successfully!");
+      assert.equal(log(myString), "a string", "the string was returned successfully!");
 
-      assert.equal(string.length >= 1, 1, "the string has at least 1 character!");
+      assert.equal(myString.length >= 1, 1, "the string has at least 1 character!");
     });
 
 
-    // Error checking of type parameters passed to 'log()'
+    /* Error checking of primitive JS types passed to 'log()' as a
+     * parameter
+     */
     QUnit.test("'log()' should throw an error if no parameter is passed or the parameter is not a string", function() {
 
-      var func = function(){};
+      var func = function(){},
+          mySymbol = Symbol("a symbol");
+
+      raises(function() {
+        log();
+      }, Error, "it threw an error since there's no parameter passed");
+
       raises(function() {
         log(func);
       }, Error, "it threw an error since a function was passed as a parameter");
@@ -55,8 +63,8 @@
       }, Error, "it threw an error since an object was passed as a parameter");
 
       raises(function() {
-        log();
-      }, Error, "it threw an error since there's no parameter passed");
+        log(mySymbol);
+      }, Error, "it threw an error since an ES2015 symbol was passed as a parameter");
 
       raises(function() {
         log(undefined);
@@ -65,11 +73,6 @@
       raises(function() {
         log(null);
       }, Error, "it threw an error since parameter is null");
-
-      var mySymbol = Symbol('foo');
-      raises(function() {
-        log(mySymbol);
-      }, Error, "it threw an error since an ES2015 symbol was passed as a parameter");
 
     });
 
@@ -83,17 +86,20 @@
 
 
 
-    QUnit.test("Add two numbers", function(assert) {
-      var foo = 1;
-      var bar = 2;
-      assert.equal(CreateElement(foo, bar), 3);
+    // Start 'Carousel()' tests
+    QUnit.test("Carousel() should return a string and a number", function(assert) {
+
+      var myNumber  = 65253635;
+      var myString = "My string";
+
+      assert.ok(Carosuel(myNumber, myString), true);
     });
 
 
     QUnit.test( "it should append a div that has text and a class named 'some-class", function(assert) {
 
       var fixture = document.getElementById("qunit-fixture"),
-      links = fixture.getElementsByTagName("div");
+          links = fixture.getElementsByTagName("div");
 
       addMagic("div", "qunit-fixture", "text", "some-class");
 
