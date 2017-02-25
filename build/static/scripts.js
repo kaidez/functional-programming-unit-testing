@@ -10,4 +10,5 @@ var sayBigDeal = function() {
 doSomething(sayBigDeal);
 
 var someCarousel = new Carousel("carousel-one", 5435);
+someCarousel.setText();
 //addMagic("section", "target", "foo");
