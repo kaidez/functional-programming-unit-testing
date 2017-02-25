@@ -96,18 +96,18 @@
     });
 
 
-    QUnit.test( "it should append a div that has text and a class named 'some-class", function(assert) {
+    QUnit.test("it should append a div that has text and a class named 'some-class", function(assert) {
 
       var fixture = document.getElementById("qunit-fixture"),
           links = fixture.getElementsByTagName("div");
 
       addMagic("div", "qunit-fixture", "text", "some-class");
 
-      assert.equal( $( "div", fixture ).length, 1, "div added successfully!" );
+      assert.equal($("div", fixture).length, 1, "div added successfully!");
 
       assert.equal(links[0].innerHTML, "text", "the div has text!");
 
-      assert.equal( $(links[0]).hasClass("some-class"), 1, "the div has a class named 'some-class'!" );
+      assert.equal($(links[0]).hasClass("some-class"), 1, "the div has a class named 'some-class'!");
     });
 
 </script>
