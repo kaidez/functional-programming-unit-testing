@@ -32,10 +32,9 @@ Carousel.prototype.init = function(){
   return getSlider.innerHTML = "The slider's working...";
 };
 
-function addMagic(el, target, text, className) {
-  var setElement = document.createElement(el);
-  var findElement = document.getElementById(target);
-  setElement.innerHTML = text;
-  setElement.setAttribute("class", className);
-  findElement.appendChild(setElement);
-};
+function addMagic(id, effect) {
+  var element = document.getElementById(id);
+  element.className += '-magic';
+  element.innerHTML = effect;
+  console.log(element);
+}
