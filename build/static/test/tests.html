@@ -23,13 +23,18 @@
      * aFunction = function (){}."  QUnit sees it as an named function
      * behind the scenes.
      */
-    var aFunction = () => {}
+    var aFunction = () => {};
+    var anArray = [];
+
     QUnit.test("'buildArticles()' should return a function", function(assert) {
 
       assert.equal(buildArticles(aFunction), aFunction(), "a function was successfully returned!");
+
     });
 
-    QUnit.test("'buildList()' should build an unordered list with content in the <li> tags", function(assert) {
+    QUnit.test("'buildList()' tests", function(assert) {
+
+      assert.equal(buildList(anArray), aFunction(), "an array was successfully returned!");
 
     });
 
