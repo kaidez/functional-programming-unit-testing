@@ -19,7 +19,7 @@
 
   <script>
 
-    QUnit.test("'buildArticles()' should return a function", function(assert) {
+    QUnit.test("'placeList()' should return a function", function(assert) {
 
       /* ES6 arrow function definition. It's the same thing as "var
        * aFunction = function (){}."  QUnit converts it to an named
@@ -27,7 +27,7 @@
        */
       var aFunction = () => {};
 
-      assert.equal(buildArticles(aFunction), aFunction, "a function was successfully returned!");
+      assert.equal(placeList(aFunction), aFunction, "a function was successfully returned!");
 
     });
 

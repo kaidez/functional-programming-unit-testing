@@ -1,6 +1,6 @@
 "use strict";
 
-var buildArticles = function(someFunction) {
+var placeList = function(someFunction) {
   if(typeof someFunction != "function") {
     typeof someFunction === "function";
   }

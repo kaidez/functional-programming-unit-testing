@@ -1,1 +1,1 @@
-buildArticles(buildList([1, 2, 3],"target"));
+placeList(buildList([1, 2, 3],"target"));
