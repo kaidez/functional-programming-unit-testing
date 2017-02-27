@@ -26,7 +26,11 @@
     var aFunction = () => {}
     QUnit.test("'buildArticles()' should return a function", function(assert) {
 
-      assert.equal(buildArticles(aFunction), aFunction(), "a function was returned successfully!");
+      assert.equal(buildArticles(aFunction), aFunction(), "a function was successfully returned!");
+    });
+
+    QUnit.test("'buildList()' should build an unordered list with content in the <li> tags", function(assert) {
+
     });
 
 </script>
