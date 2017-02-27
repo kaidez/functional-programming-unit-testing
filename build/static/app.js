@@ -2,8 +2,9 @@
 
 var buildArticles = function(someFunction) {
   if(typeof someFunction != "function") {
-    return typeof someFunction == "function";
+    typeof someFunction === "function";
   }
+  return someFunction;
 }
 
 var buildList = function(getArray, targetElement) {
