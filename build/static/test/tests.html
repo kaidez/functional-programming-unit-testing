@@ -19,37 +19,36 @@
 
   <script>
 
-    // Point to the QUnit fixture
-    var fixture = document.getElementById("fixture");
-
-    /* ES6 arrow function definition. It's the same thing as "var
-     * aFunction = function (){}."  QUnit sees it as an named function
-     * behind the scenes.
-     */
-    var aFunction = () => {};
-
-    // Mock array
-    var anArray = [];
-
     QUnit.test("'buildArticles()' should return a function", function(assert) {
+
+      /* ES6 arrow function definition. It's the same thing as "var
+       * aFunction = function (){}."  QUnit converts it to an named
+       * function while testing.
+       */
+      var aFunction = () => {};
 
       assert.equal(buildArticles(aFunction), aFunction(), "a function was successfully returned!");
 
     });
 
-    QUnit.test("'buildList()' tests", function(assert) {
+    QUnit.test("'buildList()' should create a <ul> with an <li> in it", function(assert) {
 
-      assert.equal(buildList(anArray), aFunction(), "an array was successfully returned!");
+      buildList([1,2,3], "qunit-fixture");
+
+      var fixtureUL = $("#qunit-fixture").find("ul"),
+          fixtureLiExists = $(fixtureUL).has("li").length;
+
+      assert.ok(fixtureLiExists, "a <ul> has an <li> in it!");
 
     });
 
-</script>
+  </script>
 
 </head>
 <body>
 
   <!-- QUnit test results go here -->
-  <div id="qunit"> </div>
+  <div id="qunit"></div>
 
   <!-- DOM elements that QUnit will test go here -->
   <div id="qunit-fixture"></div>
