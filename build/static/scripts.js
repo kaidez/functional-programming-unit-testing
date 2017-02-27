@@ -11,4 +11,8 @@ doSomething(sayBigDeal);
 
 var someCarousel = new Carousel("carousel-one", 5435);
 someCarousel.init();
-//addMagic("section", "target", "foo");
+
+
+addMagic("unicorn", "spin");
+addMagic("fairy", "sparkle");
+addMagic("kitten", "rainbow");
