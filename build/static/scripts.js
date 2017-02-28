@@ -1,1 +1,8 @@
-placeList(buildList([1, 2, 3],"target"));
+var teams = buildList(["Chelsea FC", "Real Madrid", "Paris St-Germain"],"target");
+
+var teams2 = ["Arsenal", "Sevilla", "Olympique de Marseille"];
+var teams2set = buildList(teams2, "target");
+console.log(typeof teams2set);
+placeList(teams2set);
+
+placeList(buildList(["Manchester United", "FC Barcelona", "AC Monaco"],"target"));
