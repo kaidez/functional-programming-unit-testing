@@ -12,8 +12,8 @@
   <script src="jquery.js"></script>
 
   <!-- For detecting code coverage -->
-  <script src="blanket.min.js"></script>
-
+<!--   <script src="blanket.min.js"></script>
+ -->
   <!-- The code that's getting tested -->
   <script src="../app.js" data-cover></script>
 
@@ -21,24 +21,22 @@
 
     QUnit.test("'placeList()' should return a function", function(assert) {
 
-      /* ES6 arrow function definition. It's the same thing as "var
-       * aFunction = function (){}."  QUnit converts it to an named
-       * function while testing.
-       */
-      var aFunction = () => {};
+      var aFunction = function(){};
 
       assert.equal(placeList(aFunction), aFunction, "a function was successfully returned!");
 
     });
 
-    QUnit.test("'buildList()' should create a <ul> with an <li> in it", function(assert) {
+    QUnit.test("'buildList()' should create a <ul> with an <li> that has something in it", function(assert) {
 
-      buildList([1,2,3], "qunit-fixture");
+      buildList([1, "some text", {}], "qunit-fixture");
 
       var fixtureUL = $("#qunit-fixture").find("ul"),
+          liCopy = $(fixtureUL).has("li").children().toArray(),
           fixtureLiExists = $(fixtureUL).has("li").length;
 
-      assert.ok(fixtureLiExists, "a <ul> has an <li> in it!");
+      assert.ok(fixtureUL, "the page has a <ul> in it!");
+      assert.ok(fixtureLiExists, "the <ul> has an <li> in it!");
 
     });
 
