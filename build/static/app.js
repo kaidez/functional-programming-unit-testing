@@ -1,7 +1,7 @@
 "use strict";
 
 var placeList = function(someFunction) {
-  if(typeof someFunction != "function") {
+  if(typeof someFunction !== "function") {
     typeof someFunction === "function";
   }
   return someFunction;
