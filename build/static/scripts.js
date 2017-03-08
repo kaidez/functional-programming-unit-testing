@@ -1,8 +1,12 @@
-var teams = buildList(["Chelsea FC", "Real Madrid", "Paris St-Germain"],"target");
+var sayBigDeal = function() {
+  var message = "I’m kind of a big deal";
+  log(message);
+}
 
-var teams2 = ["Arsenal", "Sevilla", "Olympique de Marseille"];
-var teams2set = buildList(teams2, "target");
-console.log(typeof teams2set);
-placeList(teams2set);
+log("I’m kind of a big deal");
+doSomething(sayBigDeal);
 
-placeList(buildList(["Manchester United", "FC Barcelona", "AC Monaco"],"target"));
+var someCarousel = new Carousel("carousel-one", 5435);
+someCarousel.init();
+
+initialiseCarousel('kitten', 3000);
