@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -12,12 +12,74 @@
   <script src="jquery.js"></script>
 
   <!-- For detecting code coverage -->
-<!--   <script src="blanket.min.js"></script>
- -->
+  <script src="blanket.min.js"></script>
+
   <!-- The code that's getting tested -->
   <script src="../app.js" data-cover></script>
 
   <script>
+
+    // Start 'log()' tests
+    QUnit.test("'log()' should return a string with at least 1 character", function(assert) {
+
+      var myString = "a string";
+
+      assert.equal(log(myString), "a string", "the string was returned successfully!");
+
+      assert.equal(myString.length >= 1, 1, "the string has at least 1 character!");
+
+    });
+
+
+
+    /* Error checking of primitive JS types passed to 'log()' as a
+     * parameter
+     */
+    QUnit.test("'log()' should throw an error if no parameter is passed or the parameter is not a string", function(assert) {
+
+      assert.throws(function () {
+        log();
+      }, 'an error was thrown because no parameters are passed to "log()"');
+
+      assert.throws(function () {
+        log("");
+      }, 'an error was thrown because an empty string is the parameter');
+
+      assert.throws(function () {
+        log(null);
+      }, 'an error was thrown because "null" is the parameter');
+
+      assert.throws(function () {
+        log(undefined);
+      }, 'an error was thrown because "undefined" is the parameter');
+
+      assert.throws(function () {
+        log(function(){});
+      }, 'an error was thrown because a function is the parameter"');
+
+      assert.throws(function () {
+        log(new Symbol("a symbol"));
+      }, 'an error was thrown because an ES2015 symbol is the parameter"');
+
+      assert.throws(function () {
+        log(345345);
+      }, 'an error was thrown because an number is the parameter');
+
+      assert.throws(function () {
+        log([]);
+      }, 'an error was thrown because an array is the parameter');
+
+      assert.throws(function () {
+        log({});
+      }, 'an error was thrown because an object is the parameter');
+
+      assert.throws(function () {
+        log(true);
+      }, 'an error was thrown because a Boolean is the parameter');
+
+    });
+
+
 
     //Start 'doSomething()' tests
     QUnit.test("doSomething() should return a function", function(assert) {
@@ -104,10 +166,10 @@
 <body>
 
   <!-- QUnit test results go here -->
-  <div id="qunit"></div>
+  <div id="qunit"> </div>
 
   <!-- DOM elements that QUnit will test go here -->
-  <div id="qunit-fixture"></div>
+  <div id="qunit-fixture" class="qunit-fixture-class"></div>
 
 </body>
 </html>
