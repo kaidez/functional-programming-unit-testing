@@ -1,7 +1,7 @@
 "use strict";
 
 var log = function(someVariable) {
-  if((typeof someVariable != "string") || (someVariable.length <= 0)) {
+  if((typeof someVariable !== "string") || (someVariable.length <= 0)) {
     throw new Error("expecting a string with at least one character");
   } else {
     console.log(someVariable);
@@ -10,31 +10,33 @@ var log = function(someVariable) {
 };
 
 var doSomething = function(someFunction) {
-  return someFunction();
-}
+  if(!$.isFunction(someFunction)) {
+    throw new Error("doSomething's parameter must be a function");
+  } else {
+    return someFunction();
+  }
+};
 
 /* Pass undefined as the last parameter to prevent extra params being
  * passed...old skool Paul Irish hack: http://bit.ly/2mpRQ4o
  */
-function Carousel(getElement, spinDuration, undefined) {
+function Carousel(getElement, spinDuration) {
   this.getElement = getElement;
-  this.spinDuration = spinDuration;
-
-  if((typeof getElement != "string") || (typeof spinDuration != "number") || (arguments.length != 2)) {
-    throw new Error("Carousel() takes exactly 2 parameters: the first one (getElement) must be a string, the second one (spinDuration) must be a number");
+  this.spinDuration = spinDuration || 3000;
+  if(this.getElement === undefined) {
+    throw new Error("Carousel needs to know what element to load into");
   } else {
     return this;
   }
 }
 
-Carousel.prototype.init = function(){
-  var getSlider = document.getElementById(this.getElement);
-  return getSlider.innerHTML = "The slider's working...";
+Carousel.prototype.init = function() {
+  var getCarousel = document.getElementById(this.getElement);
+  getCarousel.innerHTML = "The " + this.getElement + " carousel has started.";
 };
 
-function addMagic(id, effect) {
-  var element = document.getElementById(id);
-  element.className += '-magic';
-  element.innerHTML = effect;
-  console.log(element);
+function initialiseCarousel(id, frequency) {
+    var slider = new Carousel(id, frequency);
+    slider.init();
+    return slider;
 }
