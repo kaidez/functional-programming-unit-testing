@@ -19,28 +19,86 @@
 
   <script>
 
-    QUnit.test("'placeList()' should return a function", function(assert) {
+    //Start 'doSomething()' tests
+    QUnit.test("doSomething() should return a function", function(assert) {
+      function returnFunc(){}
+      var myFunc = function(returnFunc){};
+      assert.equal(doSomething(myFunc), myFunc(), "the function was returned successfully!");
+    });
 
-      var aFunction = function(){};
 
-      assert.equal(placeList(aFunction), aFunction, "a function was successfully returned!");
+    /* Error checking of primitive JS types passed to 'doSomething()'
+     * as a parameter
+     */
+    QUnit.test("'doSomething()' should throw an error if no parameter is passed or the parameter is not a function", function(assert) {
+
+      assert.throws(function () {
+        doSomething();
+      }, 'an error was thrown because no parameters are passed to "doSomething()"');
+
+      assert.throws(function () {
+        doSomething("");
+      }, 'an error was thrown because an empty string is the parameter');
+
+      assert.throws(function () {
+        doSomething(null);
+      }, 'an error was thrown because "null" is the parameter');
+
+      assert.throws(function () {
+        doSomething(undefined);
+      }, 'an error was thrown because "undefined" is the parameter');
+
+      assert.throws(function () {
+        doSomething("function");
+      }, 'an error was thrown because a string is the parameter"');
+
+      assert.throws(function () {
+        doSomething(new Symbol("a symbol"));
+      }, 'an error was thrown because an ES2015 symbol is the parameter"');
+
+      assert.throws(function () {
+        doSomething(345345);
+      }, 'an error was thrown because an number is the parameter');
+
+      assert.throws(function () {
+        doSomething([]);
+      }, 'an error was thrown because an array is the parameter');
+
+      assert.throws(function () {
+        doSomething({});
+      }, 'an error was thrown because an object is the parameter');
+
+      assert.throws(function () {
+        doSomething(true);
+      }, 'an error was thrown because a Boolean is the parameter');
 
     });
 
-    QUnit.test("'buildList()' should create a <ul> with an <li> that has something in it", function(assert) {
+    // Start 'Carousel()' tests
+    QUnit.test("Carousel() should return a string and a number", function(assert) {
+      var str = "some-element";
+      var num =  4545435234
 
-      buildList([1, "some text", {}], "qunit-fixture");
-
-      var fixtureUL = $("#qunit-fixture").find("ul"),
-          liCopy = $(fixtureUL).has("li").children().toArray(),
-          fixtureLiExists = $(fixtureUL).has("li").length;
-
-      assert.ok(fixtureUL, "the page has a <ul> in it!");
-      assert.ok(fixtureLiExists, "the <ul> has an <li> in it!");
-
+       /* Best to test using "new" since it's a constructor function to
+        * prevent certain strict mode bugs http://bit.ly/2lRbngj
+        */
+      assert.ok(new Carousel(str, num), "a string and a number were returned!");
     });
 
-  </script>
+    QUnit.test("Carousel should throw an error was an element wasn't passed", function(assert) {
+      assert.throws(function () {
+        new Carousel();
+      }, "an error was an element wasn't passed");
+    });
+
+   // Start 'Carousel()' tests
+    QUnit.test("Carousel() should properly run its init() method", function(assert) {
+      var testCarousel = new Carousel("qunit-fixture");
+      testCarousel.init();
+       assert.equal($("#qunit-fixture").html(), "The qunit-fixture carousel has started.", "a slider was returned!");
+    });
+
+</script>
 
 </head>
 <body>
