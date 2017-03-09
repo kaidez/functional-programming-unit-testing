@@ -4,6 +4,7 @@ var log = function(someVariable) {
   if((typeof someVariable !== "string") || (someVariable.length <= 0)) {
     throw new Error("expecting a string with at least one character");
   } else {
+    console.log(someVariable);
     return someVariable;
   }
 };
