@@ -1,23 +1,42 @@
 "use strict";
 
-var placeList = function(someFunction) {
-  if(typeof someFunction !== "function") {
-    typeof someFunction === "function";
+var log = function(someVariable) {
+  if((typeof someVariable !== "string") || (someVariable.length <= 0)) {
+    throw new Error("expecting a string with at least one character");
+  } else {
+    console.log(someVariable);
+    return someVariable;
   }
-  return someFunction;
+};
+
+var doSomething = function(someFunction) {
+  if(!$.isFunction(someFunction)) {
+    throw new Error("doSomething's parameter must be a function");
+  } else {
+    return someFunction();
+  }
+};
+
+/* Pass undefined as the last parameter to prevent extra params being
+ * passed...old skool Paul Irish hack: http://bit.ly/2mpRQ4o
+ */
+function Carousel(getElement, spinDuration) {
+  this.getElement = getElement;
+  this.spinDuration = spinDuration || 3000;
+  if(this.getElement === undefined) {
+    throw new Error("Carousel needs to know what element to load into");
+  } else {
+    return this;
+  }
 }
 
-var buildList = function(getArray, targetElement) {
+Carousel.prototype.init = function() {
+  var getCarousel = document.getElementById(this.getElement);
+  getCarousel.innerHTML = "The " + this.getElement + " carousel has started.";
+};
 
-  var getTarget = document.getElementById(targetElement),
-      list = document.createElement("ul");
-
-  getArray.forEach(function(i){
-    var listItem = document.createElement("li");
-    listItem.innerHTML = i;
-    list.appendChild(listItem);
-  });
-
-  return getTarget.appendChild(list);
-
+function initialiseCarousel(id, frequency) {
+    var slider = new Carousel(id, frequency);
+    slider.init();
+    return slider;
 }
