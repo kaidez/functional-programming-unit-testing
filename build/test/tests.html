@@ -23,10 +23,11 @@
     QUnit.test("'log()' should return a string with at least 1 character", function(assert) {
 
       var myString = "a string";
+      log(myString)
 
       assert.equal(log(myString), "a string", "the string was returned successfully!");
 
-      assert.equal(myString.length >= 1, 1, "the string has at least 1 character!");
+      assert.equal(myString.length >= 1, true, "the string has at least 1 character!");
 
     });
 
@@ -159,6 +160,41 @@
       testCarousel.init();
        assert.equal($("#qunit-fixture").html(), "The qunit-fixture carousel has started.", "a slider was returned!");
     });
+
+   // Start 'initialiseCarousel()' tests
+    QUnit.test("initialiseCarousel() should return a new instance of Carousel()", function(assert) {
+      var testCarouselInstance = initialiseCarousel('qunit-fixture', 3000);
+      var isCarouselInstance = testCarouselInstance instanceof Carousel;
+      assert.ok(isCarouselInstance, "a new instance of Carousel() was returned!");
+    });
+
+   // Start 'addMagic()' tests
+    QUnit.test("addMagic() should return a function and add 'magic' class to  the target element", function(assert) {
+
+      function returnFunc(){};
+      addMagic("qunit-fixture", returnFunc);
+
+      assert.equal(typeof returnFunc, "function", "the function was returned successfully!");
+      assert.equal($("#qunit-fixture").hasClass("magic"), true, "The targeted element has a class named 'magic' !");
+
+    });
+
+  QUnit.module("addMagic() effect tests", function() {
+    QUnit.test("spin() should load 'spinning...' into its targeted element", function(assert) {
+      addMagic("qunit-fixture", spin);
+      assert.equal($("#qunit-fixture").html(), "spinning...", "The targeted element contains text that says 'spinning...'");
+    });
+
+    QUnit.test("sparkle() should load 'sparkling...' into its targeted element", function(assert) {
+      addMagic("qunit-fixture", sparkle);
+      assert.equal($("#qunit-fixture").html(), "sparkling...", "The targeted element contains text that says 'sparkling...'");
+    });
+
+    QUnit.test("rainbow() should load 'rainbowing...' into its targeted element", function(assert) {
+      addMagic("qunit-fixture", rainbow);
+      assert.equal($("#qunit-fixture").html(), "rainbowing...", "The targeted element contains text that says 'rainbowing...'");
+    });
+  });
 
 </script>
 
