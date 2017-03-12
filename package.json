@@ -2,7 +2,6 @@
   "name": "functional-programming-unit-testing",
   "version": "1.0.0",
   "description": "Code I wrote to learn unit testing by learning functional programming first",
-  "main": "n/a",
   "scripts": {
     "server": "./node_modules/httpster/bin/httpster -p 3000 -d ./build/",
     "copy-jquery": "ncp node_modules/jquery/dist/jquery.js build/static/test/jquery.js",
@@ -22,9 +21,6 @@
   ],
   "author": "kaidez",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kaidez/functional-programming-unit-testing/issues"
-  },
   "homepage": "n/a",
   "devDependencies": {
     "blanket": "^1.2.3",
