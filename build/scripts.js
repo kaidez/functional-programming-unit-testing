@@ -4,9 +4,16 @@ var sayBigDeal = function() {
 }
 
 log("I’m kind of a big deal");
+
 doSomething(sayBigDeal);
 
 var someCarousel = new Carousel("carousel-one", 5435);
 someCarousel.init();
 
-initialiseCarousel('kitten', 3000);
+var testCarousel = initialiseCarousel('main-carousel', 3000);
+console.log(testCarousel instanceof Carousel);
+console.log(testCarousel.constructor);
+
+addMagic('unicorn', spin);
+addMagic('fairy', sparkle);
+addMagic('kitten', rainbow);
