@@ -17,9 +17,6 @@ var doSomething = function(someFunction) {
   }
 };
 
-/* Pass undefined as the last parameter to prevent extra params being
- * passed...old skool Paul Irish hack: http://bit.ly/2mpRQ4o
- */
 function Carousel(getElement, spinDuration) {
   this.getElement = getElement;
   this.spinDuration = spinDuration || 3000;
@@ -36,7 +33,29 @@ Carousel.prototype.init = function() {
 };
 
 function initialiseCarousel(id, frequency) {
-    var slider = new Carousel(id, frequency);
-    slider.init();
-    return slider;
+  var slider = new Carousel(id, frequency);
+  slider.init();
+  return slider;
+}
+
+var addMagic = function (id, effect) {
+  if(!id || !effect) {
+    throw new Error("addMagic() needs an id and affect parameter");
+  } else {
+    var element = document.getElementById(id);
+    element.className += ' magic';
+    return effect(element);
+  }
+}
+
+function spin(element){
+  element.innerHTML = "spinning...";
+}
+
+function sparkle(element){
+  element.innerHTML = "sparkling...";
+}
+
+function rainbow(element){
+  element.innerHTML = "rainbowing...";
 }
