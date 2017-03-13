@@ -31,8 +31,6 @@
 
     });
 
-
-
     /* Error checking of primitive JS types passed to 'log()' as a
      * parameter
      */
@@ -78,6 +76,9 @@
         log(true);
       }, 'an error was thrown because a Boolean is the parameter');
 
+      assert.throws(function () {
+        log(/string/g);
+      }, 'an error was thrown because a Regex is the parameter');
     });
 
 
@@ -135,6 +136,10 @@
         doSomething(true);
       }, 'an error was thrown because a Boolean is the parameter');
 
+      assert.throws(function () {
+        doSomething(/test/g);
+      }, 'an error was thrown because a Regex is the parameter');
+
     });
 
     // Start 'Carousel()' tests
@@ -158,7 +163,7 @@
     QUnit.test("Carousel() should properly run its init() method", function(assert) {
       var testCarousel = new Carousel("qunit-fixture");
       testCarousel.init();
-       assert.equal($("#qunit-fixture").html(), "The qunit-fixture carousel has started.", "a slider was returned!");
+      assert.equal($("#qunit-fixture").html(), "The qunit-fixture carousel has started.", "a slider was returned!");
     });
 
    // Start 'initialiseCarousel()' tests
