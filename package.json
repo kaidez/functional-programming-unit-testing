@@ -16,6 +16,7 @@
     "url": "git+https://github.com/kaidez/functional-programming-unit-testing.git"
   },
   "keywords": [
+    "qunit",
     "unit testing",
     "functional programming"
   ],
