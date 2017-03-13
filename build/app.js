@@ -40,7 +40,7 @@ function initialiseCarousel(id, frequency) {
 
 var addMagic = function (id, effect) {
   if(!id || !effect) {
-    throw new Error("addMagic() needs an id and affect parameter");
+    throw new Error("addMagic() needs an id and effect parameter");
   } else {
     var element = document.getElementById(id);
     element.className += ' magic';
