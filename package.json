@@ -26,7 +26,7 @@
     "blanket": "^1.2.3",
     "httpster": "^1.0.3",
     "ncp": "^2.0.0",
-    "qunitjs": "^2.1.1"
+    "qunitjs": "^2.2.0"
   },
   "dependencies": {
     "jquery": "^3.1.1"
