@@ -20,28 +20,28 @@
   <script>
 
     // Start 'log()' tests
-    QUnit.test("'log()' should return a string with at least 1 character", function(assert) {
+    QUnit.test('"log()" should return a string with at least 1 character', function(assert) {
 
-      var myString = "a string";
-      log(myString)
+      var myString = 'a string';
+      log(myString);
 
-      assert.equal(log(myString), "a string", "the string was returned successfully!");
+      assert.equal(log(myString), 'a string', 'the string was returned successfully!');
 
-      assert.equal(myString.length >= 1, true, "the string has at least 1 character!");
+      assert.equal(myString.length >= 1, true, 'the string has at least 1 character!');
 
     });
 
     /* Error checking of primitive JS types passed to 'log()' as a
      * parameter
      */
-    QUnit.test("'log()' should throw an error if no parameter is passed or the parameter is not a string", function(assert) {
+    QUnit.test('"log()" should throw an error if no parameter is passed or the parameter is not a string', function(assert) {
 
       assert.throws(function () {
         log();
       }, 'an error was thrown because no parameters are passed to "log()"');
 
       assert.throws(function () {
-        log("");
+        log('');
       }, 'an error was thrown because an empty string is the parameter');
 
       assert.throws(function () {
@@ -54,10 +54,10 @@
 
       assert.throws(function () {
         log(function(){});
-      }, 'an error was thrown because a function is the parameter"');
+      }, 'an error was thrown because a function is the parameter');
 
       assert.throws(function () {
-        log(new Symbol("a symbol"));
+        log(new Symbol('a symbol'));
       }, 'an error was thrown because an ES2015 symbol is the parameter"');
 
       assert.throws(function () {
@@ -84,17 +84,17 @@
 
 
     //Start 'doSomething()' tests
-    QUnit.test("doSomething() should return a function", function(assert) {
+    QUnit.test('doSomething() should return a function', function(assert) {
       function returnFunc(){}
       var myFunc = function(returnFunc){};
-      assert.equal(doSomething(myFunc), myFunc(), "the function was returned successfully!");
+      assert.equal(doSomething(myFunc), myFunc(), 'the function was returned successfully!');
     });
 
 
     /* Error checking of primitive JS types passed to 'doSomething()'
      * as a parameter
      */
-    QUnit.test("'doSomething()' should throw an error if no parameter is passed or the parameter is not a function", function(assert) {
+    QUnit.test('"doSomething()" should throw an error if no parameter is passed or the parameter is not a function', function(assert) {
 
       assert.throws(function () {
         doSomething();
@@ -144,61 +144,73 @@
 
     // Start 'Carousel()' tests
     QUnit.test("Carousel() should return a string and a number", function(assert) {
-      var str = "some-element";
+      var str = 'some-element';
       var num =  4545435234
 
        /* Best to test using "new" since it's a constructor function to
         * prevent certain strict mode bugs http://bit.ly/2lRbngj
         */
-      assert.ok(new Carousel(str, num), "a string and a number were returned!");
+      assert.ok(new Carousel(str, num), 'a string and a number were returned!');
     });
 
-    QUnit.test("Carousel should throw an error was an element wasn't passed", function(assert) {
+    QUnit.test('Carousel should throw an error if an element was not passed', function(assert) {
       assert.throws(function () {
         new Carousel();
-      }, "an error was an element wasn't passed");
+      }, 'an error was an element was not passed');
     });
 
    // Start 'Carousel()' tests
-    QUnit.test("Carousel() should properly run its init() method", function(assert) {
-      var testCarousel = new Carousel("qunit-fixture");
+    QUnit.test("Carousel() should run its init() method and load the proper text", function(assert) {
+      var testCarousel = new Carousel('qunit-fixture');
       testCarousel.init();
-      assert.equal($("#qunit-fixture").html(), "The qunit-fixture carousel has started.", "a slider was returned!");
+      assert.equal($('#qunit-fixture').html(), 'The qunit-fixture carousel has started.', 'ainit() ran and loaded the proper test');
     });
 
    // Start 'initialiseCarousel()' tests
-    QUnit.test("initialiseCarousel() should return a new instance of Carousel()", function(assert) {
+    QUnit.test('initialiseCarousel() should return a new instance of Carousel()', function(assert) {
       var testCarouselInstance = initialiseCarousel('qunit-fixture', 3000);
       var isCarouselInstance = testCarouselInstance instanceof Carousel;
-      assert.ok(isCarouselInstance, "a new instance of Carousel() was returned!");
+      assert.ok(isCarouselInstance, 'a new instance of Carousel() was returned!');
     });
 
-   // Start 'addMagic()' tests
-    QUnit.test("addMagic() should return a function and add 'magic' class to  the target element", function(assert) {
+  // Start 'addMagic()' tests
+  QUnit.test('addMagic() should return a function and add a "magic" class to the target element', function(assert) {
 
-      function returnFunc(){};
-      addMagic("qunit-fixture", returnFunc);
+    function returnFunc(){}
+    addMagic("qunit-fixture", returnFunc);
 
-      assert.equal(typeof returnFunc, "function", "the function was returned successfully!");
-      assert.equal($("#qunit-fixture").hasClass("magic"), true, "The targeted element has a class named 'magic' !");
+    assert.equal(typeof returnFunc, 'function', 'the function was returned successfully!');
+    assert.equal($('#qunit-fixture').hasClass('magic'), true, 'The targeted element has a class named "magic" !');
 
-    });
+  });
 
-  QUnit.module("addMagic() effect tests", function() {
-    QUnit.test("spin() should load 'spinning...' into its targeted element", function(assert) {
+  QUnit.module('addMagic() effect tests', function() {
+    QUnit.test('spin() should load "spinning..." into its targeted element', function(assert) {
       addMagic("qunit-fixture", spin);
-      assert.equal($("#qunit-fixture").html(), "spinning...", "The targeted element contains text that says 'spinning...'");
+      assert.equal($('#qunit-fixture').html(), 'spinning...', 'The targeted element contains text that says "spinning..."');
     });
 
-    QUnit.test("sparkle() should load 'sparkling...' into its targeted element", function(assert) {
-      addMagic("qunit-fixture", sparkle);
-      assert.equal($("#qunit-fixture").html(), "sparkling...", "The targeted element contains text that says 'sparkling...'");
+    QUnit.test('sparkle() should load "sparkling..." into its targeted element', function(assert) {
+      addMagic('qunit-fixture', sparkle);
+      assert.equal($('#qunit-fixture').html(), 'sparkling...', 'The targeted element contains text that says "sparkling..."');
     });
 
-    QUnit.test("rainbow() should load 'rainbowing...' into its targeted element", function(assert) {
-      addMagic("qunit-fixture", rainbow);
-      assert.equal($("#qunit-fixture").html(), "rainbowing...", "The targeted element contains text that says 'rainbowing...'");
+    QUnit.test('rainbow() should load "rainbowing..." into its targeted element', function(assert) {
+      addMagic('qunit-fixture', rainbow);
+      assert.equal($('#qunit-fixture').html(), 'rainbowing...', 'The targeted element contains text that says "rainbowing..."');
     });
+  });
+
+  QUnit.test('"addMagic()" should throw an error if no parameters are passed', function(assert) {
+
+      assert.throws(function () {
+        addMagic();
+      }, 'an error was thrown because no parameters were passed to "addMagic()"');
+
+      assert.throws(function() {
+        addMagic(spin);
+      }, 'an error was thrown because less than 2 parameters were passed to "addMagic()"');
+
   });
 
 </script>
@@ -210,7 +222,7 @@
   <div id="qunit"> </div>
 
   <!-- DOM elements that QUnit will test go here -->
-  <div id="qunit-fixture" class="qunit-fixture-class"></div>
+  <div id="qunit-fixture"></div>
 
 </body>
 </html>
