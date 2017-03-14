@@ -23,7 +23,6 @@
     QUnit.test('"log()" should return a string with at least 1 character', function(assert) {
 
       var myString = 'a string';
-      log(myString);
 
       assert.equal(log(myString), 'a string', 'the string was returned successfully!');
 
@@ -163,7 +162,7 @@
     QUnit.test("Carousel() should run its init() method and load the proper text", function(assert) {
       var testCarousel = new Carousel('qunit-fixture');
       testCarousel.init();
-      assert.equal($('#qunit-fixture').html(), 'The qunit-fixture carousel has started.', 'ainit() ran and loaded the proper test');
+      assert.equal($('#qunit-fixture').html(), 'The qunit-fixture carousel has started.', 'init() ran and loaded the proper test');
     });
 
    // Start 'initialiseCarousel()' tests
@@ -219,7 +218,7 @@
 <body>
 
   <!-- QUnit test results go here -->
-  <div id="qunit"> </div>
+  <div id="qunit"></div>
 
   <!-- DOM elements that QUnit will test go here -->
   <div id="qunit-fixture"></div>
