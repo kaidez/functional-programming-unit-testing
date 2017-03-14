@@ -38,9 +38,9 @@ function initialiseCarousel(id, frequency) {
   return slider;
 }
 
-var addMagic = function (id, effect) {
+function addMagic(id, effect) {
   if(!id || !effect) {
-    throw new Error("addMagic() needs an id and effect parameter");
+    throw new Error('addMagic() needs an id and effect parameter');
   } else {
     var element = document.getElementById(id);
     element.className += ' magic';
@@ -48,14 +48,14 @@ var addMagic = function (id, effect) {
   }
 }
 
-function spin(element){
-  element.innerHTML = "spinning...";
+function spin(getElement){
+  getElement.innerHTML = 'spinning...';
 }
 
-function sparkle(element){
-  element.innerHTML = "sparkling...";
+function sparkle(getElement){
+  getElement.innerHTML = 'sparkling...';
 }
 
-function rainbow(element){
-  element.innerHTML = "rainbowing...";
+function rainbow(getElement){
+  getElement.innerHTML = 'rainbowing...';
 }
