@@ -142,7 +142,7 @@
     });
 
     // Start 'Carousel()' tests
-    QUnit.test("Carousel() should return a string and a number", function(assert) {
+    QUnit.test('Carousel() should return a string and a number', function(assert) {
       var str = 'some-element';
       var num =  4545435234
 
@@ -159,7 +159,7 @@
     });
 
    // Start 'Carousel()' tests
-    QUnit.test("Carousel() should run its init() method and load the proper text", function(assert) {
+    QUnit.test('Carousel() should run its init() method and load the proper text', function(assert) {
       var testCarousel = new Carousel('qunit-fixture');
       testCarousel.init();
       assert.equal($('#qunit-fixture').html(), 'The qunit-fixture carousel has started.', 'init() ran and loaded the proper text!');
@@ -176,7 +176,7 @@
   QUnit.test('addMagic() should return a function and add a "magic" class to the target element', function(assert) {
 
     function returnFunc(){}
-    addMagic("qunit-fixture", returnFunc);
+    addMagic('qunit-fixture', returnFunc);
 
     assert.equal(typeof returnFunc, 'function', 'the function was returned successfully!');
     assert.equal($('#qunit-fixture').hasClass('magic'), true, 'The targeted element has a class named "magic" !');
@@ -185,7 +185,7 @@
 
   QUnit.module('addMagic() effect tests', function() {
     QUnit.test('spin() should load "spinning..." into its targeted element', function(assert) {
-      addMagic("qunit-fixture", spin);
+      addMagic('qunit-fixture', spin);
       assert.equal($('#qunit-fixture').html(), 'spinning...', 'The targeted element contains text that says "spinning..."');
     });
 
