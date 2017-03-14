@@ -1,3 +1,5 @@
+'use strict';
+
 var sayBigDeal = function() {
   var message = "I'm kind of a big deal";
   log(message);
