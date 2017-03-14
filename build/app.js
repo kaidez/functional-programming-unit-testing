@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var log = function(someVariable) {
   if((typeof someVariable !== 'string') || (someVariable.length <= 0)) {
