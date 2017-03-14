@@ -1,8 +1,8 @@
 "use strict";
 
 var log = function(someVariable) {
-  if((typeof someVariable !== "string") || (someVariable.length <= 0)) {
-    throw new Error("expecting a string with at least one character");
+  if((typeof someVariable !== 'string') || (someVariable.length <= 0)) {
+    throw new Error('expecting a string with at least one character');
   } else {
     console.log(someVariable);
     return someVariable;
@@ -21,7 +21,7 @@ function Carousel(getElement, spinDuration) {
   this.getElement = getElement;
   this.spinDuration = spinDuration || 3000;
   if(this.getElement === undefined) {
-    throw new Error("Carousel needs to know what element to load into");
+    throw new Error('Carousel needs to know what element to load into');
   } else {
     return this;
   }
@@ -29,7 +29,7 @@ function Carousel(getElement, spinDuration) {
 
 Carousel.prototype.init = function() {
   var getCarousel = document.getElementById(this.getElement);
-  getCarousel.innerHTML = "The " + this.getElement + " carousel has started.";
+  getCarousel.innerHTML = 'The ' + this.getElement + ' carousel has started.';
 };
 
 function initialiseCarousel(id, frequency) {
