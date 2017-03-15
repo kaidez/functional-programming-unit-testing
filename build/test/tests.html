@@ -102,16 +102,16 @@
       }, 'an error was thrown because an empty string is the parameter');
 
       assert.throws(function () {
+        doSomething("function");
+      }, 'an error was thrown because a string is the parameter"');
+
+      assert.throws(function () {
         doSomething(null);
       }, 'an error was thrown because "null" is the parameter');
 
       assert.throws(function () {
         doSomething(undefined);
       }, 'an error was thrown because "undefined" is the parameter');
-
-      assert.throws(function () {
-        doSomething("function");
-      }, 'an error was thrown because a string is the parameter"');
 
       assert.throws(function () {
         doSomething(new Symbol("a symbol"));
