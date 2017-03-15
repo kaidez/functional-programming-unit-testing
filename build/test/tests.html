@@ -33,7 +33,7 @@
     /* Error checking of primitive JS types passed to 'log()' as a
      * parameter
      */
-    QUnit.test('"log()" should throw an error if no parameter is passed or the parameter is not a string', function(assert) {
+    QUnit.test('"log()" should throw an error if no parameter is passed or if the parameter is not a string', function(assert) {
 
       assert.throws(function () {
         log();
@@ -80,20 +80,18 @@
       }, 'an error was thrown because a Regex is the parameter');
     });
 
-
-
     //Start 'doSomething()' tests
-    QUnit.test('doSomething() should return a function', function(assert) {
-      function returnFunc(){}
-      var myFunc = function(returnFunc){};
-      assert.equal(doSomething(myFunc), myFunc(), 'the function was returned successfully!');
-    });
+    QUnit.test('"doSomething()" should return a function', function(assert) {
 
+      var myFunc = function(){};
+      assert.equal(doSomething(myFunc), myFunc(), 'the function was returned successfully!');
+
+    });
 
     /* Error checking of primitive JS types passed to 'doSomething()'
      * as a parameter
      */
-    QUnit.test('"doSomething()" should throw an error if no parameter is passed or the parameter is not a function', function(assert) {
+    QUnit.test('"doSomething()" should throw an error if no parameter is passed or if the parameter is not a function', function(assert) {
 
       assert.throws(function () {
         doSomething();
@@ -142,7 +140,7 @@
     });
 
     // Start 'Carousel()' tests
-    QUnit.test('Carousel() should return a string and a number', function(assert) {
+    QUnit.test('"Carousel()" should return a string and a number', function(assert) {
       var str = 'some-element';
       var num =  4545435234
 
@@ -152,21 +150,21 @@
       assert.ok(new Carousel(str, num), 'a string and a number were returned!');
     });
 
-    QUnit.test('Carousel should throw an error if an element was not passed', function(assert) {
+    QUnit.test('"Carousel" should throw an error if an element was not passed as a parameter', function(assert) {
       assert.throws(function () {
         new Carousel();
-      }, 'an error was an element was not passed');
+      }, 'an error was because an element was not passed as a parameter');
     });
 
    // Start 'Carousel()' tests
-    QUnit.test('Carousel() should run its init() method and load the proper text', function(assert) {
+    QUnit.test('"Carousel()" should run its init() method and load the proper text', function(assert) {
       var testCarousel = new Carousel('qunit-fixture');
       testCarousel.init();
       assert.equal($('#qunit-fixture').html(), 'The qunit-fixture carousel has started.', 'init() ran and loaded the proper text!');
     });
 
    // Start 'initialiseCarousel()' tests
-    QUnit.test('initialiseCarousel() should return a new instance of Carousel()', function(assert) {
+    QUnit.test('"initialiseCarousel()" should return a new instance of Carousel()', function(assert) {
       var testCarouselInstance = initialiseCarousel('qunit-fixture', 3000);
       var isCarouselInstance = testCarouselInstance instanceof Carousel;
       assert.ok(isCarouselInstance, 'a new instance of Carousel() was returned!');
