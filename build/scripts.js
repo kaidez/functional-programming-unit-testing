@@ -1,11 +1,11 @@
 'use strict';
 
+log("I'm kind of a big deal");
+
 var sayBigDeal = function() {
   var message = "I'm kind of a big deal";
   log(message);
 }
-
-log("I'm kind of a big deal");
 
 doSomething(sayBigDeal);
 
