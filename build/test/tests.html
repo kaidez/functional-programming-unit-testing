@@ -141,6 +141,7 @@
 
     // Start 'Carousel()' tests
     QUnit.test('"Carousel()" should return a string and a number', function(assert) {
+
       var str = 'some-element';
       var num =  4545435234
 
@@ -151,23 +152,29 @@
     });
 
     QUnit.test('"Carousel" should throw an error if an element was not passed as a parameter', function(assert) {
+
       assert.throws(function () {
         new Carousel();
       }, 'an error was because an element was not passed as a parameter');
+
     });
 
    // Start 'Carousel()' tests
     QUnit.test('"Carousel()" should run its init() method and load the proper text', function(assert) {
+
       var testCarousel = new Carousel('qunit-fixture');
       testCarousel.init();
+
       assert.equal($('#qunit-fixture').html(), 'The qunit-fixture carousel has started.', 'init() ran and loaded the proper text!');
     });
 
    // Start 'initialiseCarousel()' tests
     QUnit.test('"initialiseCarousel()" should return a new instance of Carousel()', function(assert) {
+
       var testCarouselInstance = initialiseCarousel('qunit-fixture', 3000);
       var isCarouselInstance = testCarouselInstance instanceof Carousel;
       assert.ok(isCarouselInstance, 'a new instance of Carousel() was returned!');
+
     });
 
   // Start 'addMagic()' tests
@@ -196,9 +203,10 @@
       addMagic('qunit-fixture', rainbow);
       assert.equal($('#qunit-fixture').html(), 'rainbowing...', 'The targeted element contains text that says "rainbowing..."');
     });
+
   });
 
-  QUnit.test('"addMagic()" should throw an error if no parameters are passed', function(assert) {
+  QUnit.test('"addMagic()" should throw an error if less than 2 parameters are passed', function(assert) {
 
       assert.throws(function () {
         addMagic();
@@ -206,7 +214,7 @@
 
       assert.throws(function() {
         addMagic(spin);
-      }, 'an error was thrown because less than 2 parameters were passed to "addMagic()"');
+      }, 'an error was thrown because only one parameter was passed to "addMagic()"');
 
   });
 
