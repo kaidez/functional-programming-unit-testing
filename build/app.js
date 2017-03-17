@@ -32,30 +32,30 @@ Carousel.prototype.init = function() {
   getCarousel.innerHTML = 'The ' + this.getElement + ' carousel has started.';
 };
 
-function initialiseCarousel(id, frequency) {
-  var slider = new Carousel(id, frequency);
-  slider.init();
-  return slider;
-}
+// function initialiseCarousel(id, frequency) {
+//   var slider = new Carousel(id, frequency);
+//   slider.init();
+//   return slider;
+// }
 
-function addMagic(id, effect) {
-  if(!id || !effect) {
-    throw new Error('addMagic() needs an id and effect parameter');
-  } else {
-    var element = document.getElementById(id);
-    element.className += ' magic';
-    return effect(element);
-  }
-}
+// function addMagic(id, effect) {
+//   if(!id || !effect) {
+//     throw new Error('addMagic() needs an id and effect parameter');
+//   } else {
+//     var element = document.getElementById(id);
+//     element.className += ' magic';
+//     return effect(element);
+//   }
+// }
 
-function spin(getElement){
-  getElement.innerHTML = 'spinning...';
-}
+// function spin(getElement){
+//   getElement.innerHTML = 'spinning...';
+// }
 
-function sparkle(getElement){
-  getElement.innerHTML = 'sparkling...';
-}
+// function sparkle(getElement){
+//   getElement.innerHTML = 'sparkling...';
+// }
 
-function rainbow(getElement){
-  getElement.innerHTML = 'rainbowing...';
-}
+// function rainbow(getElement){
+//   getElement.innerHTML = 'rainbowing...';
+// }

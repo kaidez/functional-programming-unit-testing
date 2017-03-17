@@ -177,46 +177,46 @@
 
     });
 
-  // Start 'addMagic()' tests
-  QUnit.test('addMagic() should return a function and add a "magic" class to the target element', function(assert) {
+  // // Start 'addMagic()' tests
+  // QUnit.test('addMagic() should return a function and add a "magic" class to the target element', function(assert) {
 
-    function returnFunc(){}
-    addMagic('qunit-fixture', returnFunc);
+  //   function returnFunc(){}
+  //   addMagic('qunit-fixture', returnFunc);
 
-    assert.equal(typeof returnFunc, 'function', 'the function was returned successfully!');
-    assert.equal($('#qunit-fixture').hasClass('magic'), true, 'The targeted element has a class named "magic" !');
+  //   assert.equal(typeof returnFunc, 'function', 'the function was returned successfully!');
+  //   assert.equal($('#qunit-fixture').hasClass('magic'), true, 'The targeted element has a class named "magic" !');
 
-  });
+  // });
 
-  QUnit.module('addMagic() effect tests', function() {
-    QUnit.test('spin() should load "spinning..." into its targeted element', function(assert) {
-      addMagic('qunit-fixture', spin);
-      assert.equal($('#qunit-fixture').html(), 'spinning...', 'The targeted element contains text that says "spinning..."');
-    });
+  // QUnit.module('addMagic() effect tests', function() {
+  //   QUnit.test('spin() should load "spinning..." into its targeted element', function(assert) {
+  //     addMagic('qunit-fixture', spin);
+  //     assert.equal($('#qunit-fixture').html(), 'spinning...', 'The targeted element contains text that says "spinning..."');
+  //   });
 
-    QUnit.test('sparkle() should load "sparkling..." into its targeted element', function(assert) {
-      addMagic('qunit-fixture', sparkle);
-      assert.equal($('#qunit-fixture').html(), 'sparkling...', 'The targeted element contains text that says "sparkling..."');
-    });
+  //   QUnit.test('sparkle() should load "sparkling..." into its targeted element', function(assert) {
+  //     addMagic('qunit-fixture', sparkle);
+  //     assert.equal($('#qunit-fixture').html(), 'sparkling...', 'The targeted element contains text that says "sparkling..."');
+  //   });
 
-    QUnit.test('rainbow() should load "rainbowing..." into its targeted element', function(assert) {
-      addMagic('qunit-fixture', rainbow);
-      assert.equal($('#qunit-fixture').html(), 'rainbowing...', 'The targeted element contains text that says "rainbowing..."');
-    });
+  //   QUnit.test('rainbow() should load "rainbowing..." into its targeted element', function(assert) {
+  //     addMagic('qunit-fixture', rainbow);
+  //     assert.equal($('#qunit-fixture').html(), 'rainbowing...', 'The targeted element contains text that says "rainbowing..."');
+  //   });
 
-  });
+  // });
 
-  QUnit.test('"addMagic()" should throw an error if less than 2 parameters are passed', function(assert) {
+  // QUnit.test('"addMagic()" should throw an error if less than 2 parameters are passed', function(assert) {
 
-      assert.throws(function () {
-        addMagic();
-      }, 'an error was thrown because no parameters were passed to "addMagic()"');
+  //     assert.throws(function () {
+  //       addMagic();
+  //     }, 'an error was thrown because no parameters were passed to "addMagic()"');
 
-      assert.throws(function() {
-        addMagic(spin);
-      }, 'an error was thrown because only one parameter was passed to "addMagic()"');
+  //     assert.throws(function() {
+  //       addMagic(spin);
+  //     }, 'an error was thrown because only one parameter was passed to "addMagic()"');
 
-  });
+  // });
 
 </script>
 
