@@ -4,10 +4,10 @@
   "description": "Code I wrote to learn unit testing by learning functional programming first",
   "scripts": {
     "server": "./node_modules/httpster/bin/httpster -p 3000 -d ./build/",
-    "copy-jquery": "ncp node_modules/jquery/dist/jquery.js build/static/test/jquery.js",
-    "copy-blanket": "ncp node_modules/blanket/dist/qunit/blanket.min.js build/blanket.min.js",
-    "copy-qunit-js": "ncp node_modules/qunitjs/qunit/qunit.js build/test/qunit.js",
-    "copy-qunit-css": "ncp node_modules/qunitjs/qunit/qunit.css build/test/qunit.css",
+    "copy-jquery": "ncp node_modules/jquery/dist/jquery.js build/jquery.js",
+    "copy-blanket": "ncp node_modules/blanket/dist/qunit/blanket.min.js build/test/blanket.min.js",
+    "copy-qunit-js": "ncp node_modules/qunitjs/qunit/qunit.js build/qunit.js",
+    "copy-qunit-css": "ncp node_modules/qunitjs/qunit/qunit.css build/qunit.css",
     "copy-all-qunit": "npm run copy-qunit-js && npm run copy-qunit-css",
     "start": "npm run server"
   },
