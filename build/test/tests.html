@@ -142,13 +142,13 @@
     // Start 'Carousel()' tests
     QUnit.test('"Carousel()" should return a string and a number', function(assert) {
 
-      var str = 'some-element';
-      var num =  4545435234
+      var someString = 'some-element';
+      var someNumber =  4545435234
 
-       /* Best to test using "new" since it's a constructor function to
-        * prevent certain strict mode bugs http://bit.ly/2lRbngj
-        */
-      assert.ok(new Carousel(str, num), 'a string and a number were returned!');
+      /* Best to test using "new" since it's a constructor function to
+       * prevent certain strict mode bugs http://bit.ly/2lRbngj
+       */
+      assert.ok(new Carousel(someString, someNumber), 'a string and a number were returned!');
     });
 
     QUnit.test('"Carousel" should throw an error if an element was not passed as a parameter', function(assert) {
