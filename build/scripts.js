@@ -14,6 +14,9 @@ initialiseCarousel('kitten', 3000);
 var someCarousel = new Carousel('carousel-one', 5435);
 someCarousel.init();
 
+var someOtherCarousel = new Carousel('carousel-two');
+someOtherCarousel.init();
+
 var testCarousel = initialiseCarousel('main-carousel', 3000);
 
 addMagic('unicorn', spin);
